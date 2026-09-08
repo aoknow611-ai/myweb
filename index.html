@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人作品集 Portfolio | 學習歷程與專案展示</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Google Fonts 提升質感 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header class="navbar">
+        <div class="logo">MY PORTFOLIO</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#projects">成果作品</a></li>
+                <li><a href="#skills">核心技能</a></li>
+                <li><a href="#contact">聯絡方式</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 個人主頁／簡介區塊 (Hero Section) -->
+    <section id="about" class="hero">
+        <div class="hero-content">
+            <h1>你好，我是 <span class="highlight">[你的名字]</span></h1>
+            <p class="subtitle">跨領域創作者 / 數位內容企劃 / 前端開發者</p>
+            <p class="description">
+                歡迎來到我的個人品牌網站！這裡記錄了我大學四年在設計、程式開發與文化內容企劃上的學習歷程與專案作品。
+            </p>
+            <a href="#projects" class="btn">瀏覽作品</a>
+        </div>
+    </section>
+
+    <!-- 成果作品區塊 (Projects Section) -->
+    <section id="projects" class="projects-section">
+        <h2>大學四年成果專案</h2>
+        
+        <!-- 分類篩選按鈕 -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">全部作品</button>
+            <button class="filter-btn" data-filter="design">視覺/設計</button>
+            <button class="filter-btn" data-filter="dev">程式/開發</button>
+            <button class="filter-btn" data-filter="marketing">企劃/行銷</button>
+        </div>
+
+        <!-- 作品卡片列表 -->
+        <div class="projects-grid">
+
+            <!-- 卡片 1 -->
+            <div class="project-card" data-category="dev">
+                <div class="card-img" style="background-image: url('https://via.placeholder.com/400x250');"></div>
+                <div class="card-info">
+                    <span class="tag">程式/開發</span>
+                    <h3>C 語言演算法與排序專題</h3>
+                    <p>自主鑽研 C 語言演算法，實作分析 Bubble Sort、Merge Sort 與 Quick Sort 之效能評估。</p>
+                    <a href="#" class="card-link">查看完整報告 →</a>
+                </div>
+            </div>
+
+            <!-- 卡片 2 -->
+            <div class="project-card" data-category="marketing">
+                <div class="card-img" style="background-image: url('https://via.placeholder.com/400x250');"></div>
+                <div class="card-info">
+                    <span class="tag">企劃/行銷</span>
+                    <h3>地方竹編產業文化調查與創生</h3>
+                    <p>深入訪談在地職人，整合地理人文研究，將傳統工藝轉化為數位文化行銷企劃。</p>
+                    <a href="#" class="card-link">深入瞭解 →</a>
+                </div>
+            </div>
+
+            <!-- 卡片 3 -->
+            <div class="project-card" data-category="design">
+                <div class="card-img" style="background-image: url('https://via.placeholder.com/400x250');"></div>
+                <div class="card-info">
+                    <span class="tag">視覺/設計</span>
+                    <h3>品牌包裝與視覺識別設計</h3>
+                    <p>結合色彩學與構成概念，融合在地文化元素，設計具現代感與故事性的品牌包裝。</p>
+                    <a href="#" class="card-link">查看作品集 →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 技能區塊 (Skills Section) -->
+    <section id="skills" class="skills-section">
+        <h2>專業能力與工具</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>設計與視覺</h3>
+                <ul>
+                    <li>素描與造型觀察</li>
+                    <li>色彩學與平面構成</li>
+                    <li>UI/UX 介面設計</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>資訊與程式</h3>
+                <ul>
+                    <li>HTML5 / CSS3 / JavaScript</li>
+                    <li>C 語言與基礎演算法</li>
+                    <li>網頁前端版面建構</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>企劃與行銷</h3>
+                <ul>
+                    <li>文化內容企劃</li>
+                    <li>文創商品開發與市調</li>
+                    <li>團隊溝通與專案彙整</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡與頁尾區塊 -->
+    <footer id="contact">
+        <h2>聯絡我</h2>
+        <p>如果有任何合作機會或交流想法，歡迎隨時與我聯繫！</p>
+        <div class="contact-links">
+            <a href="mailto:your-email@gmail.com">Email 聯繫</a>
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        </div>
+        <p class="copyright">&copy; 2026 Your Name. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
