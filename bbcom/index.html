@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【星光閃耀】迷你陪伴系列 | Starry Chibi Series</title>
+    <!-- 引入外部 CSS 樣式表 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 離線/CDN 圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>STARRY CHIBI</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#products">全系列角色</a>
+                <a href="#story">品牌故事</a>
+                <a href="#limited">隱藏版規則</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="cart-btn" id="cartToggleBtn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主視覺 Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">✨ 2026 全新潮玩盲盒企劃</span>
+            <h1>【星光閃耀】<br>迷你陪伴系列</h1>
+            <p>10 位閃閃發光的超萌偶像 Q 版娃娃，隨時隨地治癒你的日常！單抽盲盒或一次擁有全套盲盒大合體。</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn btn-primary">立即選購盲盒</a>
+                <a href="#limited" class="btn btn-outline">解鎖隱藏版祕密</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 產品展示區 -->
+    <main class="container products-section" id="products">
+        <div class="section-title">
+            <h2>系列角色介紹</h2>
+            <p>點擊卡片查看詳細角色魅力與配件，或直接加入購物車收藏你的命運推角！</p>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- 產品列表由 JS 動態生成 -->
+        </div>
+    </main>
+
+    <!-- 品牌故事區 -->
+    <section class="story-section" id="story">
+        <div class="container story-container">
+            <div class="story-text">
+                <h2>關於 【星光閃耀】 </h2>
+                <p>每個人的心中都有一座閃耀的舞台。我們將 10 位風格各異的頂尖偶像縮小化，化為陪伴在你身邊的治癒系 Q 版娃娃。無論是元氣滿點的小太陽、高冷的創作才子，還是神祕魅惑的舞王，他們都帶著精緻的配件與獨家代表色，等待與你相遇。</p>
+                <div class="story-features">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span>獨立精緻盲盒包裝</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-gem"></i>
+                        <span>高質感 PVC / 植絨工藝</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 隱藏版說明區 -->
+    <section class="limited-section" id="limited">
+        <div class="container limited-container">
+            <div class="limited-badge">LIMITED EDITION</div>
+            <h2>NO.10 隱藏特別版【星光大合體】</h2>
+            <p>珍珠白/彩虹霓虹雙眼，配備星芒眼設計與紀念版彩虹斗篷，手上懷抱星型獎座。為預購滿額限定抽取之極稀有收藏款！</p>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Starry Chibi
