@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome 離線/CDN 圖標 -->
+    <!-- Font Awesome 圖標 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -51,7 +51,7 @@
     <main class="container products-section" id="products">
         <div class="section-title">
             <h2>系列角色介紹</h2>
-            <p>點擊卡片查看詳細角色魅力與配件，或直接加入購物車收藏你的命運推角！</p>
+            <p>點擊卡片查看詳細角色魅力與配件，或直接加入收藏你的命運推角！</p>
         </div>
 
         <div class="product-grid" id="productGrid">
@@ -84,11 +84,295 @@
         <div class="container limited-container">
             <div class="limited-badge">LIMITED EDITION</div>
             <h2>NO.10 隱藏特別版【星光大合體】</h2>
-            <p>珍珠白/彩虹霓虹雙眼，配備星芒眼設計與紀念版彩虹斗篷，手上懷抱星型獎座。為預購滿額限定抽取之極稀有收藏款！</p>
+            <p>珍珠白/彩虹霓虹雙眼，配備星芒眼設計與紀念版彩虹斗篷，手上抱著星型獎座。為預購滿額限定抽取之極稀有收藏款！</p>
         </div>
     </section>
 
     <!-- 頁尾 -->
     <footer>
         <div class="container footer-content">
-            <p>&copy; 2026 Starry Chibi
+            <p>&copy; 2026 Starry Chibi Series. All Rights Reserved. Designed with passion.</p>
+        </div>
+    </footer>
+
+    <!-- 購物車側邊欄 -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> 您的收藏購物車</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">購物車目前是空的喔！快去挑選喜愛的娃娃吧 ✨</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>總計：</span>
+                <span id="cartTotalPrice">NT$ 0</span>
+            </div>
+            <button class="btn btn-primary checkout-btn" id="checkoutBtn">去結帳</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- 商品詳情 Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- 動態載入 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 互動邏輯與商品資料 -->
+    <script>
+        const products = [
+            {
+                id: "01",
+                name: "星光領唱",
+                nickname: "小星",
+                color: "櫻花粉 (日光粉)",
+                desc: "經典微笑表情配上靈動大眼，手上抱著一支磁吸式金屬麥克風。頭頂有一朵招牌呆毛，身穿迷你舞台表演服。",
+                price: 320,
+                image: "images/01.jpg"
+            },
+            {
+                id: "02",
+                name: "閃耀舞王",
+                nickname: "小躍",
+                color: "耀眼金 (活力黃)",
+                desc: "眨眼吐舌的調皮表情，反戴鴨舌帽，身穿亮片街舞外套。手持招牌應援手燈，展現滿滿舞台爆發力。",
+                price: 320,
+                image: "images/02.jpg"
+            },
+            {
+                id: "03",
+                name: "酷帥 Rapper",
+                nickname: "小酷",
+                color: "薄荷綠 (極光綠)",
+                desc: "微笑歪嘴的酷帥表情，戴著小型頭戴式耳機（配件），身穿極簡風 Ovesized 帽 T，腳穿小巧運動鞋。",
+                price: 320,
+                image: "images/03.jpg"
+            },
+            {
+                id: "04",
+                name: "溫暖門面",
+                nickname: "小暖",
+                color: "薰衣草紫",
+                desc: "帶著溫柔甜美的月牙笑眼，身穿質感學院風針織衫。手抱一隻迷你愛心抱枕，治癒感十足。",
+                price: 320,
+                image: "images/04.jpg"
+            },
+            {
+                id: "05",
+                name: "全能隊長",
+                nickname: "小領",
+                color: "深海藍 (皇家藍)",
+                desc: "眼神堅定帶有親和微笑，頭戴迷你隊長軍帽（可拆），身穿雙排扣正式西裝裝扮，胸前有隊徽精緻電繡。",
+                price: 320,
+                image: "images/05.jpg"
+            },
+            {
+                id: "06",
+                name: "高冷創作人",
+                nickname: "小靈",
+                color: "霧灰藍 (寂靜灰)",
+                desc: "面無表情的萌感貓咪臉（三線眼/呆萌表情），圍著圍巾，手上懷抱著一台迷你電子琴/吉他。",
+                price: 320,
+                image: "images/06.jpg"
+            },
+            {
+                id: "07",
+                name: "團寵老小",
+                nickname: "小萌",
+                color: "蜜桃粉 (奶橘色)",
+                desc: "圓滾滾的大眼睛帶有水光感，臉頰有明顯粉紅腮紅。頭戴兔子耳朵造型兜帽，萌度破表。",
+                price: 320,
+                image: "images/07.jpg"
+            },
+            {
+                id: "08",
+                name: "元氣陽光",
+                nickname: "小太陽",
+                color: "暖陽橙",
+                desc: "露齒大笑的超燦爛表情，頭頂戴著小葵花髮飾，手裡握著一根彩虹棒棒糖，散發滿滿正能量。",
+                price: 320,
+                image: "images/08.jpg"
+            },
+            {
+                id: "09",
+                name: "神秘主舞",
+                nickname: "小影",
+                color: "酒紅 (魅惑紫)",
+                desc: "帶有神祕感的微笑表情，眼角有招牌淚痣，身穿華麗哥德風小斗篷與蕾絲領結，精緻度極高。",
+                price: 320,
+                image: "images/09.jpg"
+            },
+            {
+                id: "10",
+                name: "隱藏特別版",
+                nickname: "星光大合體",
+                color: "珍珠白/彩虹霓虹",
+                desc: "雙眼為特別款星芒眼設計，身穿紀念版彩虹斗篷，手上抱著星型獎座。（預購滿額限定抽取/特別收藏款）",
+                price: 580,
+                image: "images/10.jpg"
+            }
+        ];
+
+        let cart = [];
+
+        // 渲染商品列表
+        const productGrid = document.getElementById('productGrid');
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image-wrap" onclick="openModal('${p.id}')">
+                    <img src="${p.image}" alt="${p.name} - ${p.nickname}">
+                    <span class="product-tag">NO.${p.id}</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-color-tag">${p.color}</span>
+                    <h3>${p.name} 【${p.nickname}】</h3>
+                    <p class="product-desc-short">${p.desc}</p>
+                    <div class="product-footer">
+                        <span class="price">NT$ ${p.price}</span>
+                        <button class="btn-add" onclick="addToCart('${p.id}')"><i class="fa-solid fa-cart-plus"></i> 加入收藏</button>
+                    </div>
+                </div>
+            `;
+            productGrid.appendChild(card);
+        });
+
+        // 購物車與互動邏輯
+        const cartToggleBtn = document.getElementById('cartToggleBtn');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const closeCart = document.getElementById('closeCart');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotalPrice = document.getElementById('cartTotalPrice');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        cartToggleBtn.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+        });
+
+        [closeCart, cartOverlay].forEach(el => {
+            el.addEventListener('click', () => {
+                cartSidebar.classList.remove('active');
+                cartOverlay.classList.remove('active');
+            });
+        });
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCart();
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+        }
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart">購物車目前是空的喔！快去挑選喜愛的娃娃吧 ✨</div>';
+                cartCount.textContent = '0';
+                cartTotalPrice.textContent = 'NT$ 0';
+                return;
+            }
+
+            let total = 0;
+            let totalCount = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                totalCount += item.qty;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.nickname}">
+                    <div class="cart-item-details">
+                        <h4>NO.${item.id} ${item.name}【${item.nickname}】</h4>
+                        <span class="cart-item-price">NT$ ${item.price}</span>
+                        <div class="cart-item-controls">
+                            <button onclick="changeQty(${index}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item" onclick="removeItem(${index})"><i class="fa-solid fa-trash-can"></i></button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            cartCount.textContent = totalCount;
+            cartTotalPrice.textContent = `NT$ ${total}`;
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('您的購物車是空的！');
+                return;
+            }
+            alert('感謝您的訂購！【星光閃耀】迷你陪伴系列盲盒將盡快為您寄出 ✨');
+            cart = [];
+            updateCart();
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+        });
+
+        // Modal 詳情檢視
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalBody = document.getElementById('modalBody');
+
+        function openModal(id) {
+            const p = products.find(item => item.id === id);
+            modalBody.innerHTML = `
+                <div class="modal-img-wrap">
+                    <img src="${p.image}" alt="${p.name}">
+                </div>
+                <div class="modal-info">
+                    <span class="product-tag">NO.${p.id} 稀有盲盒</span>
+                    <h2>${p.name} 【${p.nickname}】</h2>
+                    <p class="modal-color"><b>代表色：</b>${p.color}</p>
+                    <p class="modal-desc">${p.desc}</p>
+                    <div class="modal-price">NT$ ${p.price}</div>
+                    <button class="btn btn-primary" onclick="addToCart('${p.id}'); closeModalFunc();">加入收藏購物車</button>
+                </div>
+            `;
+            productModal.classList.add('active');
+        }
+
+        function closeModalFunc() {
+            productModal.classList.remove('active');
+        }
+
+        closeModal.addEventListener('click', closeModalFunc);
+        productModal.addEventListener('click', (e) => {
+            if (e.target === productModal) closeModalFunc();
+        });
+    </script>
+</body>
+</html>
